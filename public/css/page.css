@@ -1,0 +1,43 @@
+header a {
+  text-decoration: none;
+  color: #49494b;
+  transition: all 0.3s ease 0s;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+header a:hover {
+  color: #b2dfdb;
+}
+
+.jumbo {
+  padding-top: 9rem !important;
+  padding-bottom: 9rem !important;
+}
+
+#map {
+  height: 600px;
+  /* The height is 400 pixelss */
+  width: 100%;
+  /* The width is the width of the web pages */
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ccc;
+}
+
+.emoji {
+	width: 2em;
+}
+
+html, body {
+  background:#F2F2F4 !important;
+}
+
+
+
+
