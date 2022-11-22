@@ -6,9 +6,9 @@ header a {
   font-weight: bold;
 }
 
-header a:hover {
+/* header a:hover {
   color: #b2dfdb;
-}
+} */
 
 .jumbo {
   padding-top: 9rem !important;
@@ -23,11 +23,20 @@ header a:hover {
 }
 
 .footer {
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #ccc;
+  margin: 0;
+  padding-bottom: 5px;
+  background-color: #ddd;
+} 
+
+.footer .container .text-dark{
+  font-size:x-small;
+}
+
+.footer a{
+  color: #666;
 }
 
 .emoji {
@@ -36,8 +45,14 @@ header a:hover {
 
 html, body {
   background:#F2F2F4 !important;
+  height: 100%;
+  margin: 0;
 }
 
+.pg:hover {
+  background: #DDD;
+}
 
-
-
+.ftr {
+  font-size: smaller;
+}

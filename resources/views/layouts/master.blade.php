@@ -10,53 +10,50 @@
 <body>
    <div class="container mb-5">
 
+      <!-- START NAVIGATION -->
+      <header class="d-flex flex-wrap justify-content-center py-1 mb-1 border-bottom">
 
-
-
-      <div class="container-fluid">
-         <div class="row pt-3 pb-2">
+         <div class="row pt-3 pb-2 mx-5">
             <div class="col ps-0 pe-1">
-               <img src="/images/letters/A.jpeg" class="img-fluid" />
+               <img src="/images/letters/A.jpeg" class="img-fluid letter" />
             </div>
             <div class="col px-1">
-               <img src="/images/letters/I.jpeg" class="img-fluid" />
+               <img src="/images/letters/I.jpeg" class="img-fluid letter" />
             </div>
             <div class="col px-1">
-               <img src="/images/letters/R.jpeg" class="img-fluid" />
+               <img src="/images/letters/R.jpeg" class="img-fluid letter" />
             </div>
             <div class="col px-1">
-               <img src="/images/letters/T.jpeg" class="img-fluid" />
+               <img src="/images/letters/T.jpeg" class="img-fluid letter" />
             </div>
             <div class="col px-1">
-               <img src="/images/letters/A.jpeg" class="img-fluid" />
+               <img src="/images/letters/A.jpeg" class="img-fluid letter" />
             </div>
             <div class="col px-1">
-               <img src="/images/letters/G.jpeg" class="img-fluid" />
+               <img src="/images/letters/G.jpeg" class="img-fluid letter" />
             </div>
             <div class="col px-1">
-               <img src="/images/letters/G.jpeg" class="img-fluid" />
+               <img src="/images/letters/G.jpeg" class="img-fluid letter" />
             </div>
             <div class="col px-1">
-               <img src="/images/letters/E.jpeg" class="img-fluid" />
+               <img src="/images/letters/E.jpeg" class="img-fluid letter" />
             </div>
             <div class="col ps-1 pe-0">
-               <img src="/images/letters/R.jpeg" class="img-fluid" />
+               <img src="/images/letters/R.jpeg" class="img-fluid letter" />
             </div>
          </div>
-</div>
+      
 
-      <!-- START NAVIGATION -->
-      <header class="d-flex flex-wrap justify-content-right py-3 mb-4 border-bottom">
-         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+         <!-- <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <span class="fs-4"></span>
-         </a>
+         </a> -->
          <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" class="nav-link" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">News</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-            <li class="nav-item"><a href="#" class="nav-link active">Login</a></li>
+            <li class="btn px-0 nav-item nav-p"><a href="#" class="nav-link pg">Home</a></li>
+            <li class="btn px-0 nav-item nav-p"><a href="#" class="nav-link pg">News</a></li>
+            <li class="btn px-0 nav-item nav-p"><a href="#" class="nav-link pg">FAQ</a></li>
+            <li class="btn px-0 nav-item nav-p"><a href="#" class="nav-link pg">About</a></li>
+            <li class="btn px-0 nav-item nav-p"><a href="#" class="nav-link pg">Contact</a></li>
+            <li class="btn px-0 nav-item"><a href="#" class="nav-link active">Login</a></li>
          </ul>
       </header>
       <!-- END NAVIGATION -->
@@ -66,11 +63,11 @@
          <button type="button" class="btn btn-secondary lgrey">BMW</button>
          <button type="button" class="btn btn-secondary lgrey">Keys</button>
       </nav>
-      <div class="p-5 mb-2 bg-secondary rounded-3 bg-opacity-50 map-canvas" id="map">
+      <div class="p-5 mb-2 rounded-3 bg-opacity-50 map-canvas border-5" id="map">
          <div class="container-fluid jumbo">
             <!-- <h1 class="display-5 fw-bold">Custom jumbotron</h1>
                   <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-                  <button class="btn btn-primary btn-lg" type="button">Example button</button> -->
+                  <button class="btn btn-secondary btn-lg" type="button">Example button</button> -->
          </div>
       </div>
       <!-- END JUMBOTRON -->
@@ -148,16 +145,23 @@
             <label for="floatingPassword">Password</label>
          </div>
          <div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-secondary">Submit</button>
          </div>
       </form>
       <!-- END FORM -->
-      <!-- <footer class="footer mt-5">
-            <div class="container py-1">
-                <span class="text-light">Bootstrap 4 fixed footer content here.</span>
-            </div>
-            </footer> -->
+
+
    </div>
+
+   <footer class="footer">
+      <div class="container">
+         <span class="text-dark">(c) 2022 Airtagger by <a href="https://github.com/aftermathematic" target="_blank">aftermathematic</a>)</span>
+      </div>
+   </footer>
+
+
+
+
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
@@ -169,20 +173,20 @@
       defer></script>
    <script
       src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-   <script>
-      function getCoords() {
-         var locations = [
-            ['loc1', 51.187332, 4.404866],
-            ['loc2', 51.218207, 4.406236],
-            ['loc3', 51.219099, 4.401068],
-            ['loc4', 51.178252, 4.383026],
-            ['loc4', 51.178252, 4.386026],
-            ['loc4', 51.1738252, 4.389026],
-            ['loc4', 51.1968252, 4.4389026],
-         ];
-         return locations;
-      }
-   </script>
+      <script>
+        function getCoords() {
+            var locations = [
+                ['loc1', 51.187332, 4.404866],
+                ['loc2', 51.218207, 4.406236],
+                ['loc3', 51.219099, 4.401068],
+                ['loc4', 51.178252, 4.383026],
+                ['loc4', 51.178252, 4.386026],
+                ['loc4', 51.1738252, 4.389026],
+                ['loc4', 51.1968252, 4.4389026],
+            ];
+            return locations;
+        }
+    </script>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
    <link href="{{ asset('css/page.css') }}" rel="stylesheet">
