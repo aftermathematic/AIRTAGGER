@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\newsItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,20 @@ Route::get('/', function () {
     return view('layouts/master');
 });
 
-Route::get('/greeting', function () {
-    return view('layouts/master');
+Route::get('/news', [newsItemController::class, 'showNewsItems']);
+
+Route::get('/faq', function () {
+    dd('faq');
+});
+
+Route::get('/about', function () {
+    dd('about');
+});
+
+Route::get('/contact', function () {
+    dd('contact');
+});
+
+Route::get('/login', function () {
+    dd('login');
 });

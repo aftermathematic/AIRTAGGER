@@ -15,15 +15,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username', 50);
-            $table->string('email', 254)->unique();
-            $table->string('password');            
+            $table->string('username', 60);
+            $table->string('email', 60)->unique();
+            $table->string('password', 60);            
             $table->date('birthday')->nullable;
             $table->string('aboutme', 200)->nullable;
-            $table->string('appleid', 254)->nullable;
+            $table->string('appleid', 60)->nullable;
             $table->boolean('admin');
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps();           
+
+            //$table->index('id');
         });
     }
 
