@@ -18,9 +18,9 @@ class loginController extends Controller
      public function validate_registration(Request $request)
      {
           $request->validate([
-               'name' => 'required',
+               'username' => 'required',
                'email' => 'required|email|unique:users',
-               'email' => 'required|min:6',
+               'password' => 'required|min:6',
           ]);
 
           $data = $request->all();
@@ -46,16 +46,31 @@ class loginController extends Controller
           $credentials = $request->only('email', 'password');
 
           if (Auth::attempt($credentials)) {
+               
+              // $user = Auth::user();
+              // dd($user);
+              $user = Auth::user();
+               Session::put('user', $user);
+
                return redirect('dashboard');
           }
 
-          return redirect('login')->with('succes', 'login details are not valiid');
+          return redirect('login')->with('success', 'login details are not valid');
      }
 
-     function dashbboard()
+     function dashboard()
      {
           if (Auth::check()) {
                return view('dashboard');
+          }
+
+          return redirect('login')->with('success', 'you are not allowed to access');
+     }
+
+     function profile()
+     {
+          if (Auth::check()) {
+               return view('profile');
           }
 
           return redirect('login')->with('success', 'you are not allowed to access');

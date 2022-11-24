@@ -45,5 +45,6 @@ Route::controller(loginController::class)->group(function(){
     Route::post('validate_login', 'validate_login')->name('login.validate_login');
 
     Route::get('dashboard', 'dashboard')->name('dashboard');
+    Route::get('profile', 'profile')->name('profile');
 
 });

@@ -8,7 +8,7 @@
 
     <div class="col-md-7">
 
-        <h2 class="featurette-heading">Dashboard</span></h2>
+        <h2 class="featurette-heading">Profile</span></h2>
 
     <!-- START LOGIN -->
 
