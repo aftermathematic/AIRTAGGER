@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(usersTableSeeder::class);
         $this->call(newsItemTableSeeder::class);
 
-        //$this->call(faqCatTableSeeder::class);
-        //$this->call(faqItemTableSeeder::class);
+        $this->call(faqCatTableSeeder::class);
+        $this->call(faqItemTableSeeder::class);
     }
 }

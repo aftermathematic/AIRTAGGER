@@ -23,9 +23,7 @@ class newsItemTableSeeder extends Seeder
                 'title' => 'This is the very first Airtagger news item!',
                 'content' => 'We like to welcome to you to the Airtagger website, your source for keeping track of all your Airtags in one place!',
                 'image' => '',
-                'user_id' => '1',
-                'created_at' => NULL,
-                'updated_at' => NULL
+                'user_id' => '1'
             ]
         ];
 

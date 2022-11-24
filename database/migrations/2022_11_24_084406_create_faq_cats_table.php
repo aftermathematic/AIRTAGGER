@@ -12,12 +12,9 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('news_items', function (Blueprint $table) {
+        Schema::create('faq_cats', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title', 60);
-            $table->mediumText('content');
-            $table->string('image', 60);
-            $table->foreignId('user_id')->constrained('users')->unsigned()->references('id')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
@@ -30,6 +27,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('news_items');
+        Schema::dropIfExists('faq_cats');
     }
 };

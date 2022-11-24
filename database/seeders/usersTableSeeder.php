@@ -28,9 +28,7 @@ class usersTableSeeder extends Seeder
                 'aboutme'=>'All your base are belong to us',
                 'appleid'=>'janvermeerbergen@gmail.com',
                 'admin'=>1,
-                'remember_token'=>NULL,
-                'created_at'=>NULL,
-                'updated_at'=>NULL
+                'remember_token'=>NULL
                 ],[
                 'id'=>2,
                 'username'=>'admin',
@@ -40,9 +38,7 @@ class usersTableSeeder extends Seeder
                 'aboutme'=>'',
                 'appleid'=>'',
                 'admin'=>1,
-                'remember_token'=>NULL,
-                'created_at'=>NULL,
-                'updated_at'=>NULL
+                'remember_token'=>NULL
                 ],[
                 'id'=>3,
                 'username'=>'user',
@@ -52,9 +48,7 @@ class usersTableSeeder extends Seeder
                 'aboutme'=>'',
                 'appleid'=>'',
                 'admin'=>0,
-                'remember_token'=>NULL,
-                'created_at'=>NULL,
-                'updated_at'=>NULL
+                'remember_token'=>NULL
                 ]
         ];
 
