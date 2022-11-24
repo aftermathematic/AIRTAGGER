@@ -29,7 +29,7 @@ Route::get('/faq', [faqController::class, 'showFaqCats', 'showFaqItems']);
 
 
 Route::get('/about', function () {
-    dd('about');
+    return view('about');
 });
 
 Route::get('/contact', function () {

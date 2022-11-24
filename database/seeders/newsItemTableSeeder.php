@@ -19,8 +19,13 @@ class newsItemTableSeeder extends Seeder
     {
         $items = [
             [
-                'id' => NULL,
                 'title' => 'This is the very first Airtagger news item!',
+                'content' => 'We like to welcome to you to the Airtagger website, your source for keeping track of all your Airtags in one place!',
+                'image' => '',
+                'user_id' => '1'
+            ],
+            [
+                'title' => 'This is the second Airtagger news item!',
                 'content' => 'We like to welcome to you to the Airtagger website, your source for keeping track of all your Airtags in one place!',
                 'image' => '',
                 'user_id' => '1'
