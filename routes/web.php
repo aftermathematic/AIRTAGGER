@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\faqController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\newsItemController;
 
@@ -24,9 +25,8 @@ Route::get('/', function () {
 
 Route::get('/news', [newsItemController::class, 'showNewsItems']);
 
-Route::get('/faq', function () {
-    dd('faq');
-});
+Route::get('/faq', [faqController::class, 'showFaqCats', 'showFaqItems']);
+
 
 Route::get('/about', function () {
     dd('about');
