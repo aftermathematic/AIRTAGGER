@@ -4,14 +4,13 @@
 
     <!-- START MESSAGE -->
     @if($message = Session::get('success'))
-
     <div class="alert alert-info">
-        {{ $message }}
+       Message: {{ $message }}
+
+       $request->session()->all()
     </div>
     @endif
-    
-    {{ $message }}
-    <!-- END MESSAGE -->
+     <!-- END MESSAGE -->
 
 
     <div class="row mt-4">
