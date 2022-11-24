@@ -11,7 +11,7 @@
    <div class="container mb-5">
 
       <!-- START NAVIGATION -->
-      <header class="d-flex flex-wrap justify-content-center py-1 mb-1 border-bottom">
+      <header class="d-flex flex-wrap justify-content-center py-1 mb-1">
 
          @include('includes.letters')
 
@@ -29,7 +29,7 @@
 
    </div>
 
-   <footer class="footer">
+   <footer class="footer fixed-bottom">
       <div class="container">
          <span class="text-dark">(c) 2022 Airtagger by <a href="https://github.com/aftermathematic" target="_blank">aftermathematic</a>)</span>
       </div>

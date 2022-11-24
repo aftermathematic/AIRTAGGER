@@ -23,7 +23,7 @@ class usersTableSeeder extends Seeder
                 'id'=>1,
                 'username'=>'aftermathematic',
                 'email'=>'janvermeerbergen@gmail.com',
-                'password'=>'php',
+                'password'=>'12345678',
                 'birthday'=>'2000-01-01',
                 'aboutme'=>'All your base are belong to us',
                 'appleid'=>'janvermeerbergen@gmail.com',

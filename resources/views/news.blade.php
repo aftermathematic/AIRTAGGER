@@ -14,11 +14,10 @@
     @endif
 
     <div class="col-md-7">
-        
+
         <h2 class="featurette-heading">{{$newsItem->title}}</span></h2>
         <p class="text-muted">Published by: aftermathematic- {{$newsItem->created_at}}</p>
-        <p class="lead">{{$newsItem->content}}
-        </p>
+        <p class="lead">{{$newsItem->content}}</p>
     </div>
 
     @if($loop->iteration % 2 != 0)

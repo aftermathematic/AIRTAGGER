@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\faqController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\newsItemController;
+use App\Http\Controllers\faqController;
+use App\Http\Controllers\loginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,27 +16,34 @@ use App\Http\Controllers\newsItemController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
     return view('layouts/master');
-});
+})->name('home');
 
-Route::get('/news', [newsItemController::class, 'showNewsItems']);
+Route::get('/news', [newsItemController::class, 'showNewsItems'])->name('news');
 
-Route::get('/faq', [faqController::class, 'showFaqCats', 'showFaqItems']);
-
+Route::get('/faq', [faqController::class, 'showFaqCats', 'showFaqItems'])->name('faq');
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
 Route::get('/contact', function () {
     dd('contact');
-});
+})->name('contact');
 
-Route::get('/login', function () {
-    dd('login');
+
+
+Route::controller(loginController::class)->group(function(){
+
+    Route::get('login', 'index')->name('login');
+    Route::get('logout', 'logout')->name('logout');
+    Route::get('register', 'register')->name('register');
+
+    Route::post('validate_registration', 'validate_registration')->name('login.validate_registration');
+
+    Route::post('validate_login', 'validate_login')->name('login.validate_login');
+
+    Route::get('dashboard', 'dashboard')->name('dashboard');
+
 });

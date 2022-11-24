@@ -1,4 +1,6 @@
-<div class="row pt-3 pb-2 mx-5">
+
+<div class="grid">
+    <div class="row pt-3 pb-2 mx-5">
     <div class="col ps-0 pe-1">
         <img src="/images/letters/A.jpeg" class="img-fluid letter" />
     </div>
@@ -26,4 +28,11 @@
     <div class="col ps-1 pe-0">
         <img src="/images/letters/R.jpeg" class="img-fluid letter" />
     </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12 text-center">
+        <h3>"Your Airtag history keeper!"</h3>
+    </div>
+</div>
 </div>

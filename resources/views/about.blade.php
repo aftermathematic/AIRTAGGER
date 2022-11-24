@@ -21,6 +21,12 @@
             </li>
 
             <li class="list-group-item">
+                <a href="https://www.youtube.com/playlist?list=PLxl69kCRkiI0rS3u_4hFDA1nyqol4MMZe" target="_blank">
+                    Youtube: Laravael Tutorial - Webslesson
+                </a>
+            </li>
+
+            <li class="list-group-item">
                 <a href="https://app.pluralsight.com/library/courses/laravel-9-fundamentals/" target="_blank">
                     PluralSight: Laravel 9 Fundamentals - Mateo Prigl
                 </a>
