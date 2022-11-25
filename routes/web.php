@@ -47,4 +47,6 @@ Route::controller(loginController::class)->group(function(){
     Route::get('dashboard', 'dashboard')->name('dashboard');
     Route::get('profile', 'profile')->name('profile');
 
+    Route::get('admin', 'admin')->name('admin');
+
 });

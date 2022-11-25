@@ -9,7 +9,7 @@
 
     <div class="col-md-12">
 
-        <h2 class="featurette-heading">Dashboard</span></h2>
+        <h2 class="featurette-heading">Admin</span></h2>
 
         <!-- START LOGIN -->
 

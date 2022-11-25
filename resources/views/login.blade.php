@@ -5,9 +5,7 @@
     <!-- START MESSAGE -->
     @if($message = Session::get('success'))
     <div class="alert alert-info">
-       Message: {{ $message }}
-
-       $request->session()->all()
+       {{ $message }}
     </div>
     @endif
      <!-- END MESSAGE -->
@@ -39,12 +37,10 @@
                 <div class="row mb-4">
                     <div class="col d-flex justify-content-center">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                            <input name="remember" class="form-check-input" type="checkbox" value="" checked />
                             <label class="form-check-label" for="form2Example31"> Remember me </label>
                         </div>
                     </div>
-
-
                 </div>
 
                 <div class="row mb-4">

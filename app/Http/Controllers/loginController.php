@@ -45,11 +45,11 @@ class loginController extends Controller
 
           $credentials = $request->only('email', 'password');
 
-          if (Auth::attempt($credentials)) {
+          if (Auth::attempt($credentials, true)) {
                
               // $user = Auth::user();
               // dd($user);
-              $user = Auth::user();
+               $user = Auth::user();
                Session::put('user', $user);
 
                return redirect('dashboard');
@@ -82,6 +82,18 @@ class loginController extends Controller
           Auth::logout();
 
           return redirect('login');
+
+     }
+
+
+     function admin()
+     {
+          // if (Auth::user()->admin === 1) {
+          //      return view('admin');
+          // }
+
+          // return redirect('login')->with('success', 'you are not allowed to access');
+          return view('admin');
 
      }
 
