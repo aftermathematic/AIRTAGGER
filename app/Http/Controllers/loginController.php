@@ -15,23 +15,38 @@ class loginController extends Controller
           return view('login');
      }
 
+     public function register()
+     {
+          return view('register');
+     }
+
      public function validate_registration(Request $request)
      {
           $request->validate([
                'username' => 'required',
                'email' => 'required|email|unique:users',
-               'password' => 'required|min:6',
+               'password' => 'required|confirmed|min:6',
+               'image' => 'image|mimes:jpg,jpeg,png,gif|max:1024'
           ]);
 
           $data = $request->all();
 
+          $imageName = null;
+          if ($request->file('image')->isValid()) {
+               $imageName = time() . '.' . $request->image->extension();
+               $request->image->move(public_path('images/avatars'), $imageName);
+          }
+
           User::create([
                'username' => $data['username'],
                'email' => $data['email'],
+               'birthday' => $data['birthday'],
+               'aboutme' => $data['aboutme'],
+               'image' => $imageName,
                'password' => Hash::make($data['password'])
           ]);
 
-          return redirect('login')->with('success', 'Registration completed. You can now login.');
+          return redirect('login')->with('success', 'Registration completed. You can now login. Don\'t forget to complete your profile.');
      }
 
 
@@ -46,25 +61,12 @@ class loginController extends Controller
           $credentials = $request->only('email', 'password');
 
           if (Auth::attempt($credentials, true)) {
-               
-              // $user = Auth::user();
-              // dd($user);
                $user = Auth::user();
                Session::put('user', $user);
-
-               return redirect('dashboard');
+               return redirect('profile');
           }
 
           return redirect('login')->with('success', 'login details are not valid');
-     }
-
-     function dashboard()
-     {
-          if (Auth::check()) {
-               return view('dashboard');
-          }
-
-          return redirect('login')->with('success', 'you are not allowed to access');
      }
 
      function profile()
@@ -82,19 +84,21 @@ class loginController extends Controller
           Auth::logout();
 
           return redirect('login');
-
      }
 
 
      function admin()
      {
-          // if (Auth::user()->admin === 1) {
-          //      return view('admin');
-          // }
+          if (Auth::user()->admin === 1) {
+               return view('admin');
+          }
 
-          // return redirect('login')->with('success', 'you are not allowed to access');
-          return view('admin');
+          return redirect('login')->with('success', 'you are not allowed to access');
+     }
 
+     function updateprofile()
+     {
+          return view('updateprofile');
      }
 
 

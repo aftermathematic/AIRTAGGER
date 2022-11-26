@@ -40,12 +40,12 @@ Route::controller(loginController::class)->group(function(){
     Route::get('logout', 'logout')->name('logout');
     Route::get('register', 'register')->name('register');
 
+
     Route::post('validate_registration', 'validate_registration')->name('login.validate_registration');
-
     Route::post('validate_login', 'validate_login')->name('login.validate_login');
-
     Route::get('dashboard', 'dashboard')->name('dashboard');
     Route::get('profile', 'profile')->name('profile');
+    Route::get('updateprofile', 'updateprofile')->name('updateprofile');
 
     Route::get('admin', 'admin')->name('admin');
 

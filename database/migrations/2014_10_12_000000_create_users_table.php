@@ -14,18 +14,16 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username', 60);
-            $table->string('email', 60)->unique();
-            $table->string('password', 60);
-            $table->date('birthday')->nullable;
-            $table->string('aboutme', 200)->nullable;
-            $table->string('appleid', 60)->nullable;
-            $table->boolean('admin');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->date('birthday')->nullable(true);
+            $table->string('aboutme')->nullable(true);
+            $table->string('image')->nullable(true);
+            $table->boolean('admin')->default(false);
             $table->rememberToken();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
-
-            //$table->index('id');
         });
     }
 

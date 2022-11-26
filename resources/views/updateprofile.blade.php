@@ -8,7 +8,7 @@
 
     <div class="col-md-12">
 
-        <h2 class="featurette-heading">Profile</span></h2>
+        <h2 class="featurette-heading">Update profile</span></h2>
 
         <div class="row">
             <div class="col-3 mh-100 border-end">

@@ -24,9 +24,8 @@ class usersTableSeeder extends Seeder
                 'username'=>'aftermathematic',
                 'email'=>'janvermeerbergen@gmail.com',
                 'password'=> Hash::make('00000000'),
-                'birthday'=>'2000-01-01',
+                'birthday'=>'1980-09-30',
                 'aboutme'=>'All your base are belong to us',
-                'appleid'=>'janvermeerbergen@gmail.com',
                 'admin'=>1,
                 'remember_token'=>NULL
                 ],[
@@ -34,21 +33,12 @@ class usersTableSeeder extends Seeder
                 'username'=>'admin',
                 'email'=>'admin@ehb.be',
                 'password'=> Hash::make('Password!321'),
-                'birthday'=>'2000-01-01',
-                'aboutme'=>'',
-                'appleid'=>'',
-                'admin'=>1,
-                'remember_token'=>NULL
+                'admin'=>1
                 ],[
                 'id'=>3,
                 'username'=>'user',
                 'email'=>'user@spam.be',
                 'password'=> Hash::make('00000000'),
-                'birthday'=>'2000-01-01',
-                'aboutme'=>'',
-                'appleid'=>'',
-                'admin'=>0,
-                'remember_token'=>NULL
                 ]
         ];
 
