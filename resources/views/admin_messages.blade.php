@@ -22,18 +22,49 @@
                     <div class="list-group list-group-flush border-bottom">
                         @foreach($messages as $message)
                         <div class="row featurette">
-                    <div class="col-md-9">
-                        
-                        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                                <strong class="mb-1">{{$message->name}} - {{$message->email}}</strong>
-                                <small>{{$message->created_at->format('d-m-Y')}}</small>
-                            </div>
-                            <div class="col-10 mb-1 small">{{$message->message}}</div>
-                        </a>
+                            <div class="col-md-9">
 
+                                <a class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true"
+                                    data-bs-toggle="collapse" href="#coll{{$message->id}}" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <strong class="mb-1">{{$message->name}} - {{$message->email}}</strong>
+                                        <small>{{$message->created_at->format('d-m-Y')}}</small>
+                                    </div>
+                                    <div class="col-10 mb-1 small">{{$message->message}}</div>
+                                </a>
+
+                            </div>
                         </div>
-                </div>
+
+                        <div class="row featurette collapse" id="coll{{$message->id}}">
+                            <div class="col-md-8">
+                                <div class="list-group-item list-group-item-action py-3 lh-sm">
+                                    <div class="col-10 mb-1 small">
+
+                                        <form action="{{ route('contact.reply_message') }}" method="post" class="form">
+                                            @csrf
+
+                                            <input type="hidden" name="recipient_name" value="{{$message->name}}"/>
+                                            <input type="hidden" name="recipient_email" value="{{$message->email}}"/>
+
+                                            <div class="form-outline mb-2">
+                                                <textarea name="message" class="form-control" rows="2"
+                                                    placeholder="Message" required="required"></textarea>
+                                            </div>
+
+                                            <div class="row mb-0">
+                                                <div class="col d-flex justify-content-left">
+                                                    <button type="submit" id="submit"
+                                                        class="btn btn-primary btn-block">Reply</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -51,6 +82,17 @@
 
 @section('scripts')
 <script>
+    $('<span class="asterisk">⊛</span>').insertBefore(":input[required]");
+    $(".asterisk").parent("div").css("position", "relative");
 
+    $(".asterisk").each(function () {
+        $(this).css({
+            position: "absolute",
+            top: 6,
+            right: 10,
+            color: "#F00",
+            fontWeight: "bold",
+        });
+    });
 </script>
 @endsection

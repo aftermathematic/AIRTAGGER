@@ -57,5 +57,6 @@ Route::controller(loginController::class)->group(function(){
 Route::controller(ContactController::class)->group(function(){
 
     Route::post('validate_message', 'validate_message')->name('contact.validate_message');
+    Route::post('reply_message', 'reply_message')->name('contact.reply_message');
 
 });

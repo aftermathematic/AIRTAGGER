@@ -32,5 +32,9 @@ class ContactController extends Controller
          return view('admin_messages', compact('messages'));
     }
 
+    public function reply_message()
+    {
+         dd('reply');
+    }
     
 }

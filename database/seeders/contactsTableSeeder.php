@@ -19,8 +19,8 @@ class contactsTableSeeder extends Seeder
     {
         $items = [
             [
-                'name' => 'Seymour Butts',
-                'email' => 'user@spam.be',
+                'name' => 'Jan Vermeerbergen',
+                'email' => 'janvermeerbergen@gmail.com',
                 'message' => 'Lorem ipsizzle dolizzle sit amizzle, owned adipiscing elizzle. pot velizzle, brizzle volutpizzle, suscipit quizzle, gravida vizzle, fo shizzle. Pellentesque egizzle tortizzle. Sed check out this. Daahng dawg at dolor dapibizzle turpizzle gizzle away. Mauris ghetto my shizz izzle shizzlin dizzle. Owned in things. Pellentesque bizzle yo mamma nisi. In shut the shizzle up habitasse platea dictumst. Donec dapibizzle. Curabitur tellus urna, fo ghetto, fo shizzle fo shizzle, funky fresh vitae, nunc. Phat suscipizzle. Integer semper velit sizzle stuff.'
             ],
             [
