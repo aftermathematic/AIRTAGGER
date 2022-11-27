@@ -31,8 +31,6 @@ class ContactController extends Controller
 
     public function showContactMessages()
     {
-         //$messages = Contact::get();
-
          $messages = DB::table('contacts')->orderBy('id', 'desc')->get();
          return view('admin', compact('messages'));
     }

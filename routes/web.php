@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\newsItemController;
 use App\Http\Controllers\faqController;
@@ -44,7 +45,6 @@ Route::controller(loginController::class)->group(function(){
     Route::get('logout', 'logout')->name('logout');
     Route::get('register', 'register')->name('register');
 
-
     Route::post('validate_registration', 'validate_registration')->name('login.validate_registration');
     Route::post('validate_login', 'validate_login')->name('login.validate_login');
     Route::get('dashboard', 'dashboard')->name('dashboard');
@@ -52,8 +52,12 @@ Route::controller(loginController::class)->group(function(){
     Route::get('updateprofile', 'updateprofile')->name('updateprofile');
 
     Route::get('admin', [ContactController::class, 'showContactMessages'])->name('admin');
+    Route::get('admin_users', [userController::class, 'showUsers'])->name('admin_users');
+    Route::get('admin_userCreate', 'admin_userCreate')->name('admin_userCreate');
 
+    Route::post('validate_adminRegistration', 'validate_adminRegistration')->name('login.validate_adminRegistration');
 
+    Route::get('admin_promote', [userController::class, 'admin_promote'])->name('admin_promote');
 });
 
 Route::controller(ContactController::class)->group(function(){
