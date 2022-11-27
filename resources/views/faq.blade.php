@@ -26,7 +26,7 @@
     <div class="row featurette">
         <div class="col-md-8">
             <h3 class="featurette-heading">{{ $faqItem->question }}</h3>
-            <p class="lead">{{ $faqItem->answer }}</p>
+            <p class="lead">"{{ $faqItem->answer }}"</p>
         </div>
     </div>
     @endforeach
