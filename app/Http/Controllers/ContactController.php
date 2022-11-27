@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use Illuminate\Support\Facades\DB;
+use App\Mail\TestEmail;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -28,13 +31,24 @@ class ContactController extends Controller
 
     public function showContactMessages()
     {
-         $messages = Contact::get();
-         return view('admin_messages', compact('messages'));
+         //$messages = Contact::get();
+
+         $messages = DB::table('contacts')->orderBy('id', 'desc')->get();
+         return view('admin', compact('messages'));
     }
 
-    public function reply_message()
+    public function reply_message(Request $request)
     {
-         dd('reply');
+          $data = $request->all();
+          
+          // Send email 
+          $mailData = [
+               "subject" => "Thank you for contacting Airtagger.test",
+               "message" => $data['message']
+           ];       
+           Mail::to($data['recipient_email'])->send(new TestEmail($mailData));    
+
+          return redirect('admin')->with('success', 'Message has been sent.');
     }
     
 }

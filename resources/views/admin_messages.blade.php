@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-<!-- START DASHBOARD -->
 
+<!-- START DASHBOARD -->
 <div class="row featurette">
 
     <div class="col-md-12">
@@ -16,6 +16,14 @@
             </div>
             <div class="col">
                 <!-- START MESSAGES -->
+
+                <!-- START MESSAGE -->
+                @if($message = Session::get('success'))
+                <div class="alert alert-info col-md-9">
+                    {{ $message }}
+                </div>
+                @endif
+                <!-- END MESSAGE -->
 
                 <div class="d-flex flex-column align-items-stretch flex-shrink-0">
 
@@ -45,8 +53,8 @@
                                         <form action="{{ route('contact.reply_message') }}" method="post" class="form">
                                             @csrf
 
-                                            <input type="hidden" name="recipient_name" value="{{$message->name}}"/>
-                                            <input type="hidden" name="recipient_email" value="{{$message->email}}"/>
+                                            <input type="hidden" name="recipient_name" value="{{$message->name}}" />
+                                            <input type="hidden" name="recipient_email" value="{{$message->email}}" />
 
                                             <div class="form-outline mb-2">
                                                 <textarea name="message" class="form-control" rows="2"

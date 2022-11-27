@@ -17,8 +17,7 @@ return new class extends Migration {
             $table->string('question', 60);
             $table->mediumText('answer');
             $table->foreignId('faq_cat_id')->constrained('faq_cats')->unsigned()->references('id')->onDelete('cascade');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

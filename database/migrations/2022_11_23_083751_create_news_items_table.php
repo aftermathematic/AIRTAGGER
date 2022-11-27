@@ -18,8 +18,7 @@ return new class extends Migration {
             $table->mediumText('content');
             $table->string('image', 60);
             $table->foreignId('user_id')->constrained('users')->unsigned()->references('id')->onDelete('cascade');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

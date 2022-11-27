@@ -6,6 +6,9 @@ use App\Http\Controllers\newsItemController;
 use App\Http\Controllers\faqController;
 use App\Http\Controllers\loginController;
 
+use App\Mail\TestEmail;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +52,6 @@ Route::controller(loginController::class)->group(function(){
     Route::get('updateprofile', 'updateprofile')->name('updateprofile');
 
     Route::get('admin', [ContactController::class, 'showContactMessages'])->name('admin');
-    Route::get('admin_messages', [ContactController::class, 'showContactMessages'])->name('admin_messages');
 
 
 });
@@ -59,4 +61,16 @@ Route::controller(ContactController::class)->group(function(){
     Route::post('validate_message', 'validate_message')->name('contact.validate_message');
     Route::post('reply_message', 'reply_message')->name('contact.reply_message');
 
+});
+
+
+Route::get('send-email', function(){
+    $mailData = [
+        "name" => "Test NAME",
+        "dob" => "12/12/1990"
+    ];
+
+    Mail::to("hello@example.com")->send(new TestEmail($mailData));
+
+    dd("Mail Sent Successfully!");
 });

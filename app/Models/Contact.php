@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\Contact as Authenticatable;
 
 class Contact extends Model
-{ 
+{
     use HasFactory;
 
     /**
@@ -21,6 +21,13 @@ class Contact extends Model
         'email',
         'message'
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'expired_at'];
 
     /**
      * The attributes that should be hidden for serialization.
