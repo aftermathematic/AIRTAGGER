@@ -3,8 +3,8 @@
 @section('content')
 <!-- START NEWS -->
 @foreach($newsItems as $newsItem)
-<hr class="featurette-divider">
 <div class="row featurette">
+    <h2 class="featurette-heading mb-4">News</span></h2>
 
     @if($loop->iteration % 2 == 0)
     <div class="col-md-5">

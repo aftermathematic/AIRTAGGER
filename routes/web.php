@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\newsItemController;
 use App\Http\Controllers\faqController;
@@ -29,7 +30,7 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/contact', function () {
-    dd('contact');
+    return view('contact');
 })->name('contact');
 
 
@@ -47,6 +48,14 @@ Route::controller(loginController::class)->group(function(){
     Route::get('profile', 'profile')->name('profile');
     Route::get('updateprofile', 'updateprofile')->name('updateprofile');
 
-    Route::get('admin', 'admin')->name('admin');
+    Route::get('admin', [ContactController::class, 'showContactMessages'])->name('admin');
+    Route::get('admin_messages', [ContactController::class, 'showContactMessages'])->name('admin_messages');
+
+
+});
+
+Route::controller(ContactController::class)->group(function(){
+
+    Route::post('validate_message', 'validate_message')->name('contact.validate_message');
 
 });

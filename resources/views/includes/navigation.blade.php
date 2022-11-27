@@ -1,10 +1,10 @@
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group me-2" role="group" aria-label="First group">
-        <a href="{{ route('home') }}" class="btn btn-lg btn-light">Home</a>
-        <a href="{{ route('news') }}" class="btn btn-lg btn-light">News</a>
-        <a href="{{ route('faq') }}" class="btn btn-lg btn-light">FAQ</a>
-        <a href="{{ route('about') }}" class="btn btn-lg btn-light">About</a>
-        <a href="{{ route('about') }}" class="btn btn-lg btn-light">Contact</a>
+        <a href="{{ route('home') }}" class="btn btn-lg btn-light {{ (request()->is('home')) ? 'active' : '' }}">Home</a>
+        <a href="{{ route('news') }}" class="btn btn-lg btn-light {{ (request()->is('news')) ? 'active' : '' }}">News</a>
+        <a href="{{ route('faq') }}" class="btn btn-lg btn-light {{ (request()->is('faq')) ? 'active' : '' }}">FAQ</a>
+        <a href="{{ route('about') }}" class="btn btn-lg btn-light {{ (request()->is('about')) ? 'active' : '' }}">About</a>
+        <a href="{{ route('contact') }}" class="btn btn-lg btn-light {{ (request()->is('contact')) ? 'active' : '' }}">Contact</a>
     </div>
 
     <div class="btn-group me-2" role="group" aria-label="Second group">

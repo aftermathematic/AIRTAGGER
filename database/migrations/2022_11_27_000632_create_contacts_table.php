@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('message');
-            $table->foreignId('user_id')->constrained('users')->unsigned()->references('id')->onDelete('cascade');
+            $table->string('name');
+            $table->string('email');
+            $table->text('message');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

@@ -11,26 +11,35 @@
 <!-- END MESSAGE -->
 
 
+
 <div class="row mt-4">
     <div class="col"></div>
     <div class="col-4">
-        <h2 class="featurette-heading mb-4">Login</span></h2>
-        <form action="{{ route('login.validate_login') }}" method="post" class="form">
+    <h2 class="featurette-heading mb-4">Contact</span></h2>
+
+        <form action="{{ route('contact.validate_message') }}" method="post" class="form">
             @csrf
 
+            @if($errors->has('name'))
+            <p class="text-danger mb-1">&#8226; {{ $errors->first('name') }}</p>
+            @endif
             @if($errors->has('email'))
             <p class="text-danger mb-1">&#8226; {{ $errors->first('email') }}</p>
             @endif
-            @if($errors->has('password'))
-            <p class="text-danger mb-1">&#8226; {{ $errors->first('password') }}</p>
+            @if($errors->has('message'))
+            <p class="text-danger mb-1">&#8226; {{ $errors->first('message') }}</p>
             @endif
 
             <div class="form-outline mb-4">
-                <input name="email" type="email" class="form-control" id="floatingInput" placeholder="Email address">
+                <input name="name" type="text" class="form-control" placeholder="Name" required="required">
             </div>
 
             <div class="form-outline mb-4">
-                <input name="password" type="password" class="form-control" placeholder="Password" />
+                <input name="email" type="email" class="form-control" placeholder="Email address" required="required">
+            </div>
+
+            <div class="form-outline mb-4">
+                <textarea name="message" class="form-control" rows="2" placeholder="Message" required="required"></textarea>
             </div>
 
             <div class="form-outline mb-4">
@@ -39,22 +48,9 @@
 
             <div class="row mb-4">
                 <div class="col d-flex justify-content-center">
-                    <div class="form-check">
-                        <input name="remember" class="form-check-input" type="checkbox" value="" checked />
-                        <label class="form-check-label" for="form2Example31"> Remember me </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col d-flex justify-content-center">
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group me-2" role="group">
-                            <button type="submit" id="submit" class="btn btn-success btn-block mb-4" disabled>Sign
-                                in</button>
-                        </div>
-                        <div class="btn-group me-2" role="group">
-                            <a href="{{ route('register') }}" class="btn btn-danger btn-block mb-4">Register</a>
+                            <button type="submit" id="submit" class="btn btn-primary btn-block mb-4" disabled>Send</button>
                         </div>
                     </div>
                 </div>
@@ -68,8 +64,8 @@
 
 @section('scripts')
 <link rel="stylesheet" type="text/css" href="/css/captcha.css">
-<!-- captcha plugin -->
-<script type="text/javascript" src="/js/captcha.jquery.js"></script>
+		<!-- captcha plugin -->
+		<script type="text/javascript" src="/js/captcha.jquery.js"></script>
 
 
 <script>

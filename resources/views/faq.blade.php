@@ -2,8 +2,8 @@
 
 @section('content')
 <!-- START FAQ CATS LIST-->
-<hr class="featurette-divider">
 <div class="row featurette">
+<h2 class="featurette-heading mb-4">FAQ</span></h2>
     <div class="col-md-8">
         <ul class="list-group">
             @foreach($faqCats as $faqCat)
@@ -17,6 +17,7 @@
 <!-- END FAQ CATS LIST-->
 
 <!-- START FAQ CATS + ITEMS-->
+
 @foreach($faqCats as $faqCat)
 <div class="col-md-8 mt-5" id="{{$faqCat->id}}">
     <h2 class="featurette-heading">{{ $faqCat->title }}</h2>

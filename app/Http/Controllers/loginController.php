@@ -96,6 +96,15 @@ class loginController extends Controller
           return redirect('login')->with('success', 'you are not allowed to access');
      }
 
+     function admin_messages()
+     {
+          if (Auth::user()->admin === 1) {
+               return view('admin_messages');
+          }
+
+          return redirect('login')->with('success', 'you are not allowed to access');
+     }
+
      function updateprofile()
      {
           return view('updateprofile');
