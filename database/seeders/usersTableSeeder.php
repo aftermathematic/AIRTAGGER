@@ -20,32 +20,33 @@ class usersTableSeeder extends Seeder
 
         $items = [
             [
-                'id'=>1,
-                'username'=>'aftermathematic',
-                'email'=>'janvermeerbergen@gmail.com',
-                'password'=> Hash::make('00000000'),
-                'birthday'=>'1980-09-30',
-                'aboutme'=>'All your base are belong to us',
-                'admin'=>1,
-                'remember_token'=>NULL
-                ],[
-                'id'=>2,
-                'username'=>'admin',
-                'email'=>'admin@ehb.be',
-                'password'=> Hash::make('Password!321'),
-                'admin'=>1
-                ],[
-                'id'=>3,
-                'username'=>'user',
-                'email'=>'user@spam.be',
-                'password'=> Hash::make('00000000'),
-                ]
+                'id' => 1,
+                'username' => 'aftermathematic',
+                'email' => 'janvermeerbergen@gmail.com',
+                'password' => Hash::make('00000000'),
+                'birthday' => '1980-09-30',
+                'aboutme' => 'All your base are belong to us',
+                'admin' => 1
+            ],
+            [
+                'id' => 2,
+                'username' => 'admin',
+                'email' => 'admin@ehb.be',
+                'password' => Hash::make('Password!321'),
+                'admin' => 1
+            ],
+            [
+                'id' => 3,
+                'username' => 'user',
+                'email' => 'user@spam.be',
+                'password' => Hash::make('00000000')
+            ]
         ];
 
-        foreach($items as $item){
+        foreach ($items as $item) {
             DB::table('users')->insert([$item]);
-        }          
-            
+        }
+
 
     }
 }

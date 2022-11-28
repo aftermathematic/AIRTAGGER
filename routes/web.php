@@ -40,6 +40,7 @@ Route::controller(LoginController::class)->group(function(){
     
     Route::get('profile', 'profile')->middleware('auth')->name('profile');
     Route::get('updateprofile', 'updateprofile')->middleware('auth')->name('updateprofile');
+    Route::post('validate_updatedetails', 'validate_updatedetails')->middleware('auth')->name('validate_updatedetails');
 
     Route::get('admin_userCreate', 'admin_userCreate')->middleware('auth')->name('admin_userCreate');
     Route::post('validate_adminRegistration', 'validate_adminRegistration')->middleware('auth')->name('login.validate_adminRegistration');
@@ -55,6 +56,8 @@ Route::controller(ContactController::class)->group(function(){
 Route::controller(UserController::class)->group(function(){
     Route::get('admin_users', 'showUsers')->middleware('auth')->name('admin_users');
     Route::get('admin_promote', 'admin_promote')->middleware('auth')->name('admin_promote');
+    Route::get('user/{id}', 'getUser')->name('user');
+    
 });
 
 

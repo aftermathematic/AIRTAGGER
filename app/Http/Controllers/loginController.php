@@ -7,6 +7,7 @@ use Hash;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class loginController extends Controller
 {
@@ -33,7 +34,7 @@ class loginController extends Controller
 
           $imageName = null;
 
-          if($request->file('image') != null){
+          if ($request->file('image') != null) {
                if ($request->file('image')->isValid()) {
                     $imageName = time() . '.' . $request->image->extension();
                     $request->image->move(public_path('images/avatars'), $imageName);
@@ -62,9 +63,9 @@ class loginController extends Controller
           ]);
 
           $data = $request->all();
-   
+
           $imageName = null;
-          if($request->file('image') != null){
+          if ($request->file('image') != null) {
                if ($request->file('image')->isValid()) {
                     $imageName = time() . '.' . $request->image->extension();
                     $request->image->move(public_path('images/avatars'), $imageName);
@@ -72,7 +73,7 @@ class loginController extends Controller
           }
 
           $admin = "0";
-          if($data['admin'] == "on"){
+          if ($data['admin'] == "on") {
                $admin = "1";
           }
 
@@ -110,19 +111,40 @@ class loginController extends Controller
 
      function profile()
      {
-          if (Auth::check()) {
-               return view('profile');
-          }
+          $user = auth()->user();
+          return view('profile')->with('user', $user);
+     }
 
-          return redirect('login')->with('success', 'you are not allowed to access');
+     function updateprofile()
+     {
+          $user = auth()->user();
+          return view('updateprofile')->with('user', $user);
+     }
+
+
+     function validate_updatedetails(Request $request)
+     {
+          $user = auth()->user();
+          $update = DB::table('users')
+               ->where('id', $user->id)
+               ->update(
+                    [
+                         'username' => $request->username,
+                         'email' => $request->email,
+                         'birthday' => $request->birthday,
+                         'aboutme' => $request->aboutme,
+                    ]
+               );
+
+          return redirect('profile')->with('success', 'Profile updated.');
      }
 
      function logout()
      {
           Session::flush();
           Auth::logout();
-
-          return redirect('login')->with('success', 'You have been logged out.');;
+          return redirect('login')->with('success', 'You have been logged out.');
+          ;
      }
 
 
@@ -153,10 +175,6 @@ class loginController extends Controller
           return redirect('login')->with('success', 'you are not allowed to access');
      }
 
-     function updateprofile()
-     {
-          return view('updateprofile');
-     }
 
 
 }
