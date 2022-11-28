@@ -8,7 +8,7 @@ use App\Models\User;
 use Hash;
 use Session;
 
-class userController extends Controller
+class UserController extends Controller
 {
     public function showUsers()
     {

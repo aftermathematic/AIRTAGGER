@@ -6,7 +6,7 @@ use App\Models\FaqCat;
 use App\Models\FaqItem;
 use Illuminate\Http\Request;
 
-class faqController extends Controller
+class FaqController extends Controller
 {
     public function showFaqCats()
     {

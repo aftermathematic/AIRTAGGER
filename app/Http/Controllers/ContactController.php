@@ -48,5 +48,11 @@ class ContactController extends Controller
 
           return redirect('admin')->with('success', 'Message has been sent.');
     }
+
+
+    public function index()
+    {
+         return view('contact');
+    }
     
 }

@@ -50,7 +50,7 @@
                                 <div class="list-group-item list-group-item-action py-3 lh-sm">
                                     <div class="col-10 mb-1 small">
 
-                                        <form action="{{ route('contact.reply_message') }}" method="post" class="form">
+                                        <form action="{{ route('reply_message') }}" method="post" class="form">
                                             @csrf
 
                                             <input type="hidden" name="recipient_email" value="{{$message->email}}" />

@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\userController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\NewsItemController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\GeneralController;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\newsItemController;
-use App\Http\Controllers\faqController;
-use App\Http\Controllers\loginController;
 
 use App\Mail\TestEmail;
 use Illuminate\Support\Facades\Mail;
@@ -20,61 +22,40 @@ use Illuminate\Support\Facades\Mail;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::controller(GeneralController::class)->group(function(){
+    Route::get('/', 'home')->middleware('web')->name('home');
+    Route::get('about', 'about')->middleware('web')->name('about');
+});
 
-Route::get('/', function () {
-    return view('layouts/master');
-})->name('home');
-
-Route::get('/news', [newsItemController::class, 'showNewsItems'])->name('news');
-
-Route::get('/faq', [faqController::class, 'showFaqCats', 'showFaqItems'])->name('faq');
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('news', [NewsItemController::class, 'showNewsItems'])->middleware('web')->name('news');
+Route::get('faq', [FaqController::class, 'showFaqCats', 'showFaqItems'])->middleware('web')->name('faq');
 
 
+Route::controller(LoginController::class)->group(function(){
+    Route::get('login', 'index')->middleware('web')->name('login');
+    Route::get('logout', 'logout')->middleware('web')->name('logout');
+    Route::get('register', 'register')->middleware('web')->name('register');
+    Route::post('validate_registration', 'validate_registration')->middleware('web')->name('login.validate_registration');
+    Route::post('validate_login', 'validate_login')->middleware('web')->name('login.validate_login');
+    
+    Route::get('profile', 'profile')->middleware('auth')->name('profile');
+    Route::get('updateprofile', 'updateprofile')->middleware('auth')->name('updateprofile');
 
-Route::controller(loginController::class)->group(function(){
-
-    Route::get('login', 'index')->name('login');
-    Route::get('logout', 'logout')->name('logout');
-    Route::get('register', 'register')->name('register');
-
-    Route::post('validate_registration', 'validate_registration')->name('login.validate_registration');
-    Route::post('validate_login', 'validate_login')->name('login.validate_login');
-    Route::get('dashboard', 'dashboard')->name('dashboard');
-    Route::get('profile', 'profile')->name('profile');
-    Route::get('updateprofile', 'updateprofile')->name('updateprofile');
-
-    Route::get('admin', [ContactController::class, 'showContactMessages'])->name('admin');
-    Route::get('admin_users', [userController::class, 'showUsers'])->name('admin_users');
-    Route::get('admin_userCreate', 'admin_userCreate')->name('admin_userCreate');
-
-    Route::post('validate_adminRegistration', 'validate_adminRegistration')->name('login.validate_adminRegistration');
-
-    Route::get('admin_promote', [userController::class, 'admin_promote'])->name('admin_promote');
+    Route::get('admin_userCreate', 'admin_userCreate')->middleware('auth')->name('admin_userCreate');
+    Route::post('validate_adminRegistration', 'validate_adminRegistration')->middleware('auth')->name('login.validate_adminRegistration');
 });
 
 Route::controller(ContactController::class)->group(function(){
+    Route::get('contact', 'index')->middleware('web')->name('contact');
+    Route::post('validate_message', 'validate_message')->middleware('web')->name('validate_message');
+    Route::post('reply_message', 'reply_message')->middleware('web')->name('reply_message');
+    Route::get('admin', 'showContactMessages')->middleware('auth')->name('admin');  
+});
 
-    Route::post('validate_message', 'validate_message')->name('contact.validate_message');
-    Route::post('reply_message', 'reply_message')->name('contact.reply_message');
-
+Route::controller(UserController::class)->group(function(){
+    Route::get('admin_users', 'showUsers')->middleware('auth')->name('admin_users');
+    Route::get('admin_promote', 'admin_promote')->middleware('auth')->name('admin_promote');
 });
 
 
-Route::get('send-email', function(){
-    $mailData = [
-        "name" => "Test NAME",
-        "dob" => "12/12/1990"
-    ];
 
-    Mail::to("hello@example.com")->send(new TestEmail($mailData));
-
-    dd("Mail Sent Successfully!");
-});

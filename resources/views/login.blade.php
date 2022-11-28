@@ -2,18 +2,21 @@
 
 @section('content')
 
-<!-- START MESSAGE -->
-@if($message = Session::get('success'))
-<div class="alert alert-info">
-    {{ $message }}
-</div>
-@endif
-<!-- END MESSAGE -->
+
 
 
 <div class="row mt-4">
     <div class="col"></div>
     <div class="col-4">
+
+        <!-- START MESSAGE -->
+        @if($message = Session::get('success'))
+        <div class="alert alert-info">
+            {{ $message }}
+        </div>
+        @endif
+        <!-- END MESSAGE -->
+
         <h2 class="featurette-heading mb-4">Login</span></h2>
         <form action="{{ route('login.validate_login') }}" method="post" class="form">
             @csrf

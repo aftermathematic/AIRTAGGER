@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 //use App\NewsItems;
 
-class newsItemController extends Controller
+class NewsItemController extends Controller
 {
     public function showNewsItems()
     {

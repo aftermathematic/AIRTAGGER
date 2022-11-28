@@ -122,7 +122,7 @@ class loginController extends Controller
           Session::flush();
           Auth::logout();
 
-          return redirect('login');
+          return redirect('login')->with('success', 'You have been logged out.');;
      }
 
 

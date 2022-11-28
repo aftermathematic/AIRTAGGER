@@ -1,4 +1,6 @@
+@extends('layouts.master')
 
+@section('content')
       <!-- START JUMBOTRON -->
       <nav class="mb-2">
          <button type="button" class="btn btn-secondary lgrey">Laptop</button>
@@ -91,13 +93,9 @@
          </div>
       </form>
       <!-- END FORM -->
+      @endsection
 
-
-
-
-      ===================================================================================
-
-      VOOR IN SCRIPTS:
+@section('scripts')
 
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVTmIH1hT6FNzHr35NhWTNm-6bTWtmIAk" async
       defer></script>
@@ -117,3 +115,5 @@
             return locations;
         }
     </script>
+
+@endsection

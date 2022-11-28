@@ -17,7 +17,7 @@
     <div class="col-4">
     <h2 class="featurette-heading mb-4">Contact</span></h2>
 
-        <form action="{{ route('contact.validate_message') }}" method="post" class="form">
+        <form action="{{ route('validate_message') }}" method="post" class="form">
             @csrf
 
             @if($errors->has('name'))
