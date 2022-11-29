@@ -10,8 +10,7 @@
 
     @if($loop->iteration % 2 == 0)
     <div class="col-md-5">
-        <img src="https://snworksceo.imgix.net/car/0e048d5a-258a-42ac-97d0-9a232242f8f3.sized-1000x1000.jpg"
-            width="100%">
+        <img src="/images/news/{{$newsItem->image}}" width="100%">
     </div>
     @endif
 
@@ -24,8 +23,7 @@
 
     @if($loop->iteration % 2 != 0)
     <div class="col-md-5">
-        <img src="https://snworksceo.imgix.net/car/0e048d5a-258a-42ac-97d0-9a232242f8f3.sized-1000x1000.jpg"
-            width="100%">
+        <img src="/images/news/{{$newsItem->image}}" width="100%">
     </div>
     @endif
 

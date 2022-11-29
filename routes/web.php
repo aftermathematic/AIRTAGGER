@@ -3,7 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsItemController;
-use App\Http\Controllers\FaqController;
+use App\Http\Controllers\FaqCatController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GeneralController;
 
@@ -28,8 +28,12 @@ Route::controller(GeneralController::class)->group(function(){
 });
 
 Route::get('news', [NewsItemController::class, 'showNewsItems'])->middleware('web')->name('news');
-Route::get('faq', [FaqController::class, 'showFaqCats', 'showFaqItems'])->middleware('web')->name('faq');
+//Route::get('faq', [FaqCatController::class, 'index'])->middleware('web')->name('faq');
 
+
+
+//Route::get('/faqCat',[FaqCatController::class,'index']);
+//Route::get('/product',[ProductController::class,'index']);
 
 Route::controller(LoginController::class)->group(function(){
     Route::get('login', 'index')->middleware('web')->name('login');
@@ -61,4 +65,23 @@ Route::controller(UserController::class)->group(function(){
 });
 
 
+Route::controller(FaqCatController::class)->group(function(){
+    Route::get('faq', 'index')->middleware('web')->name('faq');
+    
+    Route::get('faqCat.create', 'create')->middleware('auth')->name('faqCat.create');
+    Route::post('faqCat.store', 'store')->middleware('auth')->name('faqCat.store');
+    Route::get('faqCat.show/{id}', 'show')->middleware('auth')->name('faqCat.show');
+    Route::get('faqCat.edit/{id}', 'edit')->middleware('auth')->name('faqCat.edit');
+    Route::post('faqCat.destroy', 'destroy')->middleware('auth')->name('faqCat.destroy');
+});
+
+Route::controller(FaqItemController::class)->group(function(){
+    Route::get('faqItem', 'index')->middleware('web')->name('faqItem');
+    
+    Route::get('faqItem.create', 'create')->middleware('auth')->name('faqItem.create');
+    Route::post('faqItem.store', 'store')->middleware('auth')->name('faqItem.store');
+    Route::get('faqItem.show/{id}', 'show')->middleware('auth')->name('faqItem.show');
+    Route::get('faqItem.edit/{id}', 'edit')->middleware('auth')->name('faqItem.edit');
+    Route::post('faqItem.destroy', 'destroy')->middleware('auth')->name('faqItem.destroy');
+});
 

@@ -21,7 +21,7 @@ class newsItemTableSeeder extends Seeder
             [
                 'title' => 'This is the very first Airtagger news item!',
                 'content' => 'We like to welcome to you to the Airtagger website, your source for keeping track of all your Airtags in one place!',
-                'image' => '',
+                'image' => 'dummyairtag.jpg',
                 'user_id' => '1',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -29,7 +29,7 @@ class newsItemTableSeeder extends Seeder
             [
                 'title' => 'This is the second Airtagger news item!',
                 'content' => 'We like to welcome to you to the Airtagger website, your source for keeping track of all your Airtags in one place!',
-                'image' => '',
+                'image' => 'dummyairtag.jpg',
                 'user_id' => '1',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")

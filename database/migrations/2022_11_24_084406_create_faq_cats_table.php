@@ -15,7 +15,8 @@ return new class extends Migration {
         Schema::create('faq_cats', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title', 60);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
