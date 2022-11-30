@@ -47,7 +47,7 @@
 
                         <div class="row featurette collapse" id="coll{{$message->id}}">
                             <div class="col-md-8">
-                                <div class="list-group-item list-group-item-action py-3 lh-sm">
+                                <div class="list-group-item list-group-item-action lh-sm">
                                     <div class="col-10 mb-1 small">
 
                                         <form action="{{ route('contact.reply_message') }}" method="post" class="form">

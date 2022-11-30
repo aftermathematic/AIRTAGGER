@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\FaqCat;
 use Illuminate\Http\Request;
+use Session;
+
+Session::put('pg', 'faq');
 
 class FaqCatController extends Controller
 {

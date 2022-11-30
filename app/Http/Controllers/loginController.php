@@ -33,7 +33,6 @@ class loginController extends Controller
           $data = $request->all();
 
           $imageName = null;
-
           if ($request->file('image') != null) {
                if ($request->file('image')->isValid()) {
                     $imageName = time() . '.' . $request->image->extension();

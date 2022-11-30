@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use Illuminate\Support\Facades\DB;
 use App\Mail\TestEmail;
+use Session;
 use Illuminate\Support\Facades\Mail;
+
+Session::put('pg', 'contact');
 
 class ContactController extends Controller
 {

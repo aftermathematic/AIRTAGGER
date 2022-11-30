@@ -122,8 +122,10 @@
 
                         <div class="row featurette">
                             <div class="col-md-9">
-                                <div class="list-group-item list-group-item-action py-3 lh-sm">
+                                <div class="list-group-item list-group-item-action lh-sm">
 
+                                <a href="{{ route('admin_userCreate') }}" class="btn btn-primary">Create new
+                                        user</a>
 
                                     <table class="table table-striped">
                                         <thead>
@@ -149,8 +151,6 @@
                                         </tbody>
                                     </table>
 
-                                    <a href="{{ route('admin_userCreate') }}" class="btn btn-primary">Create new
-                                        user</a>
 
                                 </div>
                             </div>

@@ -27,12 +27,8 @@ Route::controller(GeneralController::class)->group(function(){
     Route::get('about', 'about')->middleware('web')->name('about');
 });
 
-Route::get('news', [NewsItemController::class, 'showNewsItems'])->middleware('web')->name('news');
-//Route::get('faq', [FaqCatController::class, 'index'])->middleware('web')->name('faq');
+//Route::get('news', [NewsItemController::class, 'showNewsItems'])->middleware('web')->name('news');
 
-
-
-//Route::get('/faqCat',[FaqCatController::class,'index']);
 //Route::get('/product',[ProductController::class,'index']);
 
 Route::controller(LoginController::class)->group(function(){
@@ -60,28 +56,41 @@ Route::controller(ContactController::class)->group(function(){
 Route::controller(UserController::class)->group(function(){
     Route::get('admin_users', 'showUsers')->middleware('auth')->name('admin_users');
     Route::get('admin_promote', 'admin_promote')->middleware('auth')->name('admin_promote');
-    Route::get('user/{id}', 'getUser')->name('user');
+    Route::get('user/{id}', 'getUser')->middleware('web')->name('user');
     
 });
 
 
 Route::controller(FaqCatController::class)->group(function(){
-    Route::get('faq', 'index')->middleware('web')->name('faq');
-    
-    Route::get('faqCat.create', 'create')->middleware('auth')->name('faqCat.create');
-    Route::post('faqCat.store', 'store')->middleware('auth')->name('faqCat.store');
-    Route::get('faqCat.show/{id}', 'show')->middleware('auth')->name('faqCat.show');
-    Route::get('faqCat.edit/{id}', 'edit')->middleware('auth')->name('faqCat.edit');
-    Route::post('faqCat.destroy', 'destroy')->middleware('auth')->name('faqCat.destroy');
+    Route::get('faq', 'index')                  ->middleware('web')->name('faq');
+    Route::get('faqCat.create', 'create')       ->middleware('auth')->name('faqCat.create');
+    Route::post('faqCat.store', 'store')        ->middleware('auth')->name('faqCat.store');
+    Route::get('faqCat.show/{id}', 'show')      ->middleware('auth')->name('faqCat.show');
+    Route::get('faqCat.edit/{id}', 'edit')      ->middleware('auth')->name('faqCat.edit');
+    Route::get('faqCat.update/{id}', 'edit')      ->middleware('auth')->name('faqCat.update');
+    Route::get('faqCat.destroy', 'destroy')    ->middleware('auth')->name('faqCat.destroy');
 });
 
 Route::controller(FaqItemController::class)->group(function(){
-    Route::get('faqItem', 'index')->middleware('web')->name('faqItem');
-    
-    Route::get('faqItem.create', 'create')->middleware('auth')->name('faqItem.create');
-    Route::post('faqItem.store', 'store')->middleware('auth')->name('faqItem.store');
-    Route::get('faqItem.show/{id}', 'show')->middleware('auth')->name('faqItem.show');
-    Route::get('faqItem.edit/{id}', 'edit')->middleware('auth')->name('faqItem.edit');
-    Route::post('faqItem.destroy', 'destroy')->middleware('auth')->name('faqItem.destroy');
+    Route::get('faqItem', 'index')              ->middleware('web')->name('faqItem');
+    Route::get('faqItem.create', 'create')      ->middleware('auth')->name('faqItem.create');
+    Route::post('faqItem.store', 'store')       ->middleware('auth')->name('faqItem.store');
+    Route::get('faqItem.show/{id}', 'show')     ->middleware('auth')->name('faqItem.show');
+    Route::get('faqItem.edit/{id}', 'edit')     ->middleware('auth')->name('faqItem.edit');
+    Route::post('faqItem.update', 'edit')     ->middleware('auth')->name('faqItem.update');
+    Route::get('faqItem.destroy', 'destroy')   ->middleware('auth')->name('faqItem.destroy');
 });
+
+Route::controller(NewsItemController::class)->group(function(){
+    Route::get('news', 'index')     	          ->middleware('web')->name('news');
+    Route::get('newsItem.create', 'create')       ->middleware('auth')->name('newsItem.create');
+    Route::post('newsItem.store', 'store')        ->middleware('auth')->name('newsItem.store');
+    Route::get('newsItem.show/{id}', 'show')      ->middleware('auth')->name('newsItem.show');
+    Route::get('newsItem.edit/{id}', 'edit')      ->middleware('auth')->name('newsItem.edit');
+    Route::post('newsItem.update', 'update')      ->middleware('auth')->name('newsItem.update');
+    Route::get('newsItem.destroy/{id}', 'destroy')    ->middleware('auth')->name('newsItem.destroy');
+
+    Route::get('admin.news', 'admin_index')             ->middleware('auth')->name('admin.news');
+});
+
 
