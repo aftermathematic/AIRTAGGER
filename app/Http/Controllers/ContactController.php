@@ -9,8 +9,6 @@ use App\Mail\TestEmail;
 use Session;
 use Illuminate\Support\Facades\Mail;
 
-Session::put('pg', 'contact');
-
 class ContactController extends Controller
 {
     public function validate_message(Request $request)

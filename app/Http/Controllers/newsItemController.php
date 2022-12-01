@@ -9,10 +9,6 @@ use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-Session::put('pg', 'news');
-
-//use App\NewsItems;
-
 class NewsItemController extends Controller
 {
     public function index()

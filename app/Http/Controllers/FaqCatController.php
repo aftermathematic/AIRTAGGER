@@ -6,19 +6,23 @@ use App\Models\FaqCat;
 use Illuminate\Http\Request;
 use Session;
 
-Session::put('pg', 'faq');
-
 class FaqCatController extends Controller
 {
     public function index()
     {
-        $faqCats = FaqCat::with(['faqItems'])->get();
+        $faqCats = FaqCat::orderBy('title')->get();
         return view('faq', compact('faqCats'));
+    }
+
+    public function faq_index()
+    {
+        $faqCats = FaqCat::orderBy('title')->get();
+        return view('admin_faq', compact('faqCats'));
     }
 
     public function create()
     {
-        return view('faqCat_create');
+        return view('admin_faqcat_create');
     }
 
     public function store(Request $request)
@@ -31,7 +35,7 @@ class FaqCatController extends Controller
         $faqCat->title = $request->title;
         $faqCat->save();
 
-        return redirect()->route('admin')->with('success', 'Faq category added successfully.');
+        return redirect()->route('admin.faq')->with('success', 'Faq category added successfully.');
     }
 
     public function show($id)
@@ -43,27 +47,31 @@ class FaqCatController extends Controller
     public function edit($id)
     {
         $faqCat = FaqCat::find($id);
-        dd($faqCat);
+        return view('admin_faqcat_update', compact('faqCat'));
     }
     
     public function update(Request $request)
     {
+
         $request->validate([
-            'title'          =>  'required'
+            'title'          =>  'required',
+            'id'          =>  'required'
         ]);
 
         $faqCat = FaqCat::find($request->id);
         $faqCat->title = $request->title;
         $faqCat->save();
 
-        return redirect()->route('admin')->with('success', 'Faq category updated successfully.');
+        return redirect()->route('admin.faq')->with('success', 'Faq category updated successfully.');
     }
 
-    public function destroy(FaqCat $faqCat)
+    public function destroy($id)
     {
+        $faqCat = FaqCat::find($id);
         $faqCat->delete();
-
-        return redirect()->route('admin')->with('success', 'Faq category deleted successfully.');
+        return redirect()->route('admin.faq')->with('success', 'Faq category deleted successfully.');
     }
+
+
 
 }

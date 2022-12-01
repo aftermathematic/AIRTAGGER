@@ -8,8 +8,6 @@ use App\Models\User;
 use Hash;
 use Session;
 
-Session::put('pg', 'user');
-
 class UserController extends Controller
 {
 

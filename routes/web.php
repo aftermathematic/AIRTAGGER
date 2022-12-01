@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsItemController;
 use App\Http\Controllers\FaqCatController;
+use App\Http\Controllers\FaqItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GeneralController;
 
@@ -67,8 +68,10 @@ Route::controller(FaqCatController::class)->group(function(){
     Route::post('faqCat.store', 'store')        ->middleware('auth')->name('faqCat.store');
     Route::get('faqCat.show/{id}', 'show')      ->middleware('auth')->name('faqCat.show');
     Route::get('faqCat.edit/{id}', 'edit')      ->middleware('auth')->name('faqCat.edit');
-    Route::get('faqCat.update/{id}', 'edit')      ->middleware('auth')->name('faqCat.update');
-    Route::get('faqCat.destroy', 'destroy')    ->middleware('auth')->name('faqCat.destroy');
+    Route::post('faqCat.update', 'update')      ->middleware('auth')->name('faqCat.update');
+    Route::get('faqCat.destroy/{id}', 'destroy')    ->middleware('auth')->name('faqCat.destroy');
+
+    Route::get('admin.faq', 'faq_index')             ->middleware('auth')->name('admin.faq');
 });
 
 Route::controller(FaqItemController::class)->group(function(){
@@ -77,8 +80,8 @@ Route::controller(FaqItemController::class)->group(function(){
     Route::post('faqItem.store', 'store')       ->middleware('auth')->name('faqItem.store');
     Route::get('faqItem.show/{id}', 'show')     ->middleware('auth')->name('faqItem.show');
     Route::get('faqItem.edit/{id}', 'edit')     ->middleware('auth')->name('faqItem.edit');
-    Route::post('faqItem.update', 'edit')     ->middleware('auth')->name('faqItem.update');
-    Route::get('faqItem.destroy', 'destroy')   ->middleware('auth')->name('faqItem.destroy');
+    Route::post('faqItem.update', 'update')        ->middleware('auth')->name('faqItem.update');
+    Route::get('faqItem.destroy/{id}', 'destroy')   ->middleware('auth')->name('faqItem.destroy');
 });
 
 Route::controller(NewsItemController::class)->group(function(){
