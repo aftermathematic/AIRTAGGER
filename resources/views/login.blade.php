@@ -57,7 +57,7 @@
                                 in</button>
                         </div>
                         <div class="btn-group me-2" role="group">
-                            <a href="{{ route('register') }}" class="btn btn-danger btn-block mb-4">Register</a>
+                            <a href="{{ route('user.create') }}" class="btn btn-danger btn-block mb-4">Register</a>
                         </div>
                     </div>
                 </div>

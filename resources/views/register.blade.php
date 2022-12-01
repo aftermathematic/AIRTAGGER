@@ -15,7 +15,7 @@
     <div class="col-4">
         <h2 class="featurette-heading mb-4">Register</span></h2>
 
-        <form action="{{ route('login.validate_registration') }}" method="post" enctype="multipart/form-data"
+        <form action="{{ route('user.store') }}" method="post" enctype="multipart/form-data"
             class="form">
             @csrf
 

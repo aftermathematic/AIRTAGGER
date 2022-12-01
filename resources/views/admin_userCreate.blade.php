@@ -34,7 +34,7 @@
 
                                     <div class="col-10 mb-1 small">
 
-                                        <form action="{{ route('login.validate_adminRegistration') }}" method="post"
+                                        <form action="{{ route('user.admin.store') }}" method="post"
                                             enctype="multipart/form-data" class="form">
                                             @csrf
 

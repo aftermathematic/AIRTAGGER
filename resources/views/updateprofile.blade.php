@@ -12,53 +12,76 @@
 
         <div class="row">
             <div class="col-3 mh-100 border-end">
-            @include('includes.navigationprofile')
+                @include('includes.navigationprofile')
             </div>
             <div class="col mh-100">
-            <div class="col-4">
+                <div class="col-4">
 
-        <form action="{{ route('validate_updatedetails') }}" method="post" class="form">
-            @csrf
-
-            @if($errors->has('username'))
-            <p class="text-danger mb-1">&#8226; {{ $errors->first('username') }}</p>
-            @endif
-            @if($errors->has('email'))
-            <p class="text-danger mb-1">&#8226; {{ $errors->first('email') }}</p>
-            @endif
-
-            <div class="form-outline mb-4">
-                <input name="username" type="text" class="form-control" placeholder="Username" value="{{ $user->username }}" required="required">
-            </div>
-
-            <div class="form-outline mb-4">
-                <input name="email" type="email" class="form-control" placeholder="Email address" value="{{ $user->email }}" required="required">
-            </div>
-
-            <div class="form-outline mb-4">
-                <input name="birthday" type="date" class="form-control" placeholder="Birthday" value="{{ $user->birthday }}">
-            </div>
-
-            <div class="form-outline mb-4">
-                <textarea name="aboutme" class="form-control" rows="2" placeholder="About me">{{ $user->aboutme }}</textarea>
-            </div>
-
-            <div class="form-outline mb-4">
-                <div class="captcha"></div>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col d-flex justify-content-center">
-                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group me-2" role="group">
-                            <button type="submit" id="submit" class="btn btn-primary btn-block mb-4">Update</button>
-                        </div>
+                    <!-- START MESSAGE -->
+                    @if($message = Session::get('success'))
+                    <div class="alert alert-info">
+                        {{ $message }}
                     </div>
-                </div>
-            </div>
+                    @endif
+                    <!-- END MESSAGE -->
 
-        </form>
-    </div>
+                    <form action="{{ route('user.update') }}" method="post" class="form">
+                        @csrf
+
+                        @if($errors->has('username'))
+                        <p class="text-danger mb-1">&#8226; {{ $errors->first('username') }}</p>
+                        @endif
+                        @if($errors->has('email'))
+                        <p class="text-danger mb-1">&#8226; {{ $errors->first('email') }}</p>
+                        @endif
+
+                        <div class="form-outline mb-4">
+                            <input name="username" type="text" class="form-control" placeholder="Username"
+                                value="{{ $user->username }}" required="required">
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input name="email" type="email" class="form-control" placeholder="Email address"
+                                value="{{ $user->email }}" required="required">
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input name="birthday" type="date" class="form-control" placeholder="Birthday"
+                                value="{{ $user->birthday }}">
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <textarea name="aboutme" class="form-control" rows="2"
+                                placeholder="About me">{{ $user->aboutme }}</textarea>
+                        </div>
+
+                        <div class="form-outline mb-4 input-group custom-file-button">
+                            <label class="input-group-text" for="image" role="button">Profile photo</label>
+                            <label for="image" class="form-control" id="image-label"
+                                role="button">{{$user->image}}</label>
+                            <input type="file" class="d-none" id="image" name="image">
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <div class="captcha"></div>
+                        </div>
+
+                        <input type="hidden" name="image_placeholder" value="{{$user->image}}" />
+                        <input type="hidden" name="id" value="{{$user->id}}" />
+
+                        <div class="row mb-4">
+                            <div class="col d-flex justify-content-center">
+                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div class="btn-group me-2" role="group">
+                                        <button type="submit" id="submit"
+                                            class="btn btn-primary btn-block mb-4">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
 

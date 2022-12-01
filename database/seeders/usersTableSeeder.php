@@ -26,6 +26,7 @@ class usersTableSeeder extends Seeder
                 'password' => Hash::make('00000000'),
                 'birthday' => '1980-09-30',
                 'aboutme' => 'All your base are belong to us',
+                'image' => 'dummy-profile-pic.png',
                 'admin' => 1
             ],
             [
@@ -33,12 +34,14 @@ class usersTableSeeder extends Seeder
                 'username' => 'admin',
                 'email' => 'admin@ehb.be',
                 'password' => Hash::make('Password!321'),
+                'image' => 'dummy-profile-pic.png',
                 'admin' => 1
             ],
             [
                 'id' => 3,
                 'username' => 'user',
                 'email' => 'user@spam.be',
+                'image' => 'dummy-profile-pic.png',
                 'password' => Hash::make('00000000')
             ]
         ];

@@ -7,6 +7,7 @@
 
     <div class="col-md-7">
 
+
         <h2 class="featurette-heading">Home</span></h2>
         <p class="lead">Please find below a list of sources that were consulted during the production of this website.
         </p>
