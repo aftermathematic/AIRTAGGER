@@ -163,12 +163,13 @@ class UserController extends Controller
 
     public function admin_promote(Request $request)
     {
-        $userid = $request->user;
-        $isAdmin = $request->isAdmin;
-
-        $user = User::find($userid);
-        $user->admin = $isAdmin;
+        $id = $request->id;
+        $admin = $request->admin;
+        $user = User::find($id);    
+        $user->admin = $admin;
         $user->save();
+
+        dd('saved');
     }
 
 }

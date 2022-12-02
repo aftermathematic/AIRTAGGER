@@ -33,7 +33,7 @@
 
                                     <div class="col-10 mb-1 small">
 
-                                        <form action="{{ route('login.validate_adminRegistration') }}" method="post"
+                                        <form action="{{ route('user.admin.store') }}" method="post"
                                             enctype="multipart/form-data" class="form">
                                             @csrf
 
@@ -124,8 +124,7 @@
                             <div class="col-md-9">
                                 <div class="list-group-item list-group-item-action lh-sm">
 
-                                <a href="{{ route('admin_userCreate') }}" class="btn btn-primary">Create new
-                                        user</a>
+                                <a href="{{ route('user.create') }}" class="btn btn-primary">Create new user</a>
 
                                     <table class="table table-striped">
                                         <thead>
@@ -138,7 +137,6 @@
                                         </thead>
                                         <tbody>
                                             @foreach($users as $user)
-
                                             <tr>
                                                 <td>{{$user->id}}</td>
                                                 <td>{{$user->username}}</td>
@@ -206,16 +204,19 @@
 
     $('.toggle-class').on('change', function () {
 
-        let isAdmin = $(this).prop('checked') == true ? 1 : 0;
-        let userId = $(this).prop('id');
+        let admin = $(this).prop('checked') == true ? 1 : 0;
+        let id = $(this).prop('id');
 
         if (confirm("Do you want to update the admin status of this user?")) {
 
+            //alert(isAdmin);
+
             $.ajax({
                 type: 'GET',
-                dataType: 'text/plain',
+                dataType: 'json',
                 url: ' /admin_promote',
-                data: { 'user ': userId, 'isAdmin': isAdmin }
+                data: { 'id': id, 'admin': admin },
+                async: false
             });
 
         } else {
