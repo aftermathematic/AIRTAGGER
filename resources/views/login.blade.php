@@ -45,6 +45,7 @@
                     <div class="form-check">
                         <input name="remember" class="form-check-input" type="checkbox" value="" checked />
                         <label class="form-check-label" for="form2Example31"> Remember me </label>
+                        | <a href="{{ route('forgot-password') }}">Forgot password?</a>
                     </div>
                 </div>
             </div>
@@ -73,7 +74,6 @@
 <link rel="stylesheet" type="text/css" href="/css/captcha.css">
 <!-- captcha plugin -->
 <script type="text/javascript" src="/js/captcha.jquery.js"></script>
-
 
 <script>
     $(document).ready(function () {

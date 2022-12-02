@@ -1,4 +1,9 @@
 <?php
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
+use App\Mail\TestEmail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
@@ -7,11 +12,7 @@ use App\Http\Controllers\FaqCatController;
 use App\Http\Controllers\FaqItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GeneralController;
-
-use Illuminate\Support\Facades\Route;
-
-use App\Mail\TestEmail;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,7 @@ Route::controller(LoginController::class)->group(function(){
     //Route::get('register', 'register')->middleware('web')->name('register');
     Route::post('validate_registration', 'validate_registration')->middleware('web')->name('login.validate_registration');
     Route::post('validate_login', 'validate_login')->middleware('web')->name('login.validate_login');
-    
+
     Route::get('profile', 'profile')->middleware('auth')->name('profile');
     //Route::get('updateprofile', 'updateprofile')->middleware('auth')->name('updateprofile');
     Route::post('validate_updatedetails', 'validate_updatedetails')->middleware('auth')->name('validate_updatedetails');
@@ -51,14 +52,14 @@ Route::controller(ContactController::class)->group(function(){
     Route::get('contact', 'index')->middleware('web')->name('contact');
     Route::post('validate_message', 'validate_message')->middleware('web')->name('validate_message');
     Route::post('reply_message', 'reply_message')->middleware('web')->name('reply_message');
-    Route::get('admin', 'showContactMessages')->middleware('auth')->name('admin');  
+    Route::get('admin', 'showContactMessages')->middleware('auth')->name('admin');
 });
 
 Route::controller(UserController::class)->group(function(){
     Route::get('user', 'index')                     ->middleware('web')->name('user');
     Route::get('user.create', 'create')             ->middleware('web')->name('user.create');
     Route::get('user.admin.create', 'admin_create') ->middleware('web')->name('user.admin.create');
-    
+
     Route::post('user.store', 'store')              ->middleware('web')->name('user.store');
     Route::post('user.admin.store', 'admin_store')  ->middleware('auth')->name('user.admin.store');
 
@@ -68,7 +69,7 @@ Route::controller(UserController::class)->group(function(){
     Route::get('user.destroy/{id}', 'destroy')      ->middleware('auth')->name('user.destroy');
 
     Route::get('admin_users', 'index')              ->middleware('auth')->name('admin_users');
-    Route::get('admin_promote', 'admin_promote')    ->middleware('auth')->name('admin_promote');    
+    Route::get('admin_promote', 'admin_promote')    ->middleware('auth')->name('admin_promote');
 });
 
 
@@ -105,4 +106,13 @@ Route::controller(NewsItemController::class)->group(function(){
     Route::get('admin.news', 'admin_index')         ->middleware('auth')->name('admin.news');
 });
 
+
+Route::controller(ForgotPasswordController::class)->group(function(){
+    Route::get('forgot-password', 'index')          ->middleware('web')->name('forgot-password');
+    Route::post('forgot-password', 'store')         ->middleware('web')->name('forgot-password-store');
+    Route::get('forgot-password-sent', 'sent')      ->middleware('web')->name('forgot-password-sent');
+
+    Route::get('password.reset', 'reset')      ->middleware('web')->name('password.reset');
+    Route::post('reset-password', 'resetpw')         ->middleware('web')->name('reset-password');
+});
 
