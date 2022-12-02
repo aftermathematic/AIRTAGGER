@@ -209,8 +209,6 @@
 
         if (confirm("Do you want to update the admin status of this user?")) {
 
-            //alert(isAdmin);
-
             $.ajax({
                 type: 'GET',
                 dataType: 'json',
