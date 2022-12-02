@@ -97,17 +97,17 @@ class UserController extends Controller
         return view('user', compact('user'));
     }
 
-    // public function edit()
-    // {
-    //     $user = User::find(Auth::user()->id);
-    //     return view('updateprofile', compact('user'));
-    // }
-
     public function edit()
     {
         $user = User::find(Auth::user()->id);
         return view('updateprofile', compact('user'));
     }
+
+    public function editpw()
+    {
+        $user = User::find(Auth::user()->id);
+        return view('updatepw', compact('user'));
+    }    
 
     public function update(Request $request)
     {
@@ -139,6 +139,20 @@ class UserController extends Controller
 
         return redirect('profile')->with('success', 'User profile updated succesfully.');
     }
+
+
+    public function updatepw(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        $user = User::find($request->id);
+        $user->password = Hash::make($request->password);
+        $user->save();        
+
+        return redirect('profile')->with('success', 'Password updated succesfully.');
+    }    
 
     public function destroy($id)
     {

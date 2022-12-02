@@ -65,7 +65,10 @@ Route::controller(UserController::class)->group(function(){
 
     Route::get('user/{id}', 'show')                 ->middleware('auth')->name('user.show');
     Route::get('user.edit', 'edit')                 ->middleware('auth')->name('user.edit');
+    Route::get('user.editpw', 'editpw')             ->middleware('auth')->name('user.editpw');
     Route::post('user.update', 'update')            ->middleware('auth')->name('user.update');
+    Route::post('user.updatepw', 'updatepw')        ->middleware('auth')->name('user.updatepw');
+
     Route::get('user.destroy/{id}', 'destroy')      ->middleware('auth')->name('user.destroy');
 
     Route::get('admin_users', 'index')              ->middleware('auth')->name('admin_users');
