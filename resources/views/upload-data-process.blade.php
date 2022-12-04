@@ -25,34 +25,7 @@
                     @endif
                     <!-- END MESSAGE -->
 
-                    <p>Upload your personal Airtagger.csv file from your local Airtagger folder here.</p>
-
-                    <form action="{{ route('upload-verify') }}" method="post" class="form" enctype="multipart/form-data">
-                        @csrf
-
-                        <div class="form-outline mb-4 input-group custom-file-button">
-                            <label class="input-group-text" for="file" role="button">File</label>
-                            <label for="file" class="form-control" id="file-label"
-                                role="button">select your Airtagger.csv file</label>
-                            <input type="file" class="d-none" id="file" name="file">
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <div class="captcha"></div>
-                        </div>
-
-                        <div class="row mb-4">
-                            <div class="col d-flex justify-content-center">
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group me-2" role="group">
-                                        <button type="submit" id="submit"
-                                            class="btn btn-primary btn-block mb-4" disabled>Upload</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -88,9 +61,9 @@
         });
     });
 
-    $('#file').on('change', function () {
+    $('#csvfile').on('change', function () {
         var filename = $(this).val().split('\\').pop();
-        $("#file-label").text(filename);
+        $("#csv-label").text(filename);
     });
 </script>
 @endsection

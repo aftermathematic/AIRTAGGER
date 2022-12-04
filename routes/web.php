@@ -128,6 +128,10 @@ Route::group(['middleware' => ['XSS']], function () {
         function () {
             Route::get('upload', 'index')->middleware('auth')->name('upload');
             Route::post('upload-verify', 'upload')->middleware('auth')->name('upload-verify');
+
+            //Route::post('upload-data-process', 'process')->middleware('auth')->name('upload-data-process');
+
+            Route::get('history', 'history')->middleware('auth')->name('history');
         }
     );
 
