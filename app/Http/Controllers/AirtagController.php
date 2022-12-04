@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Hash;
 use Session;
 use App\Models\User;
+use App\Models\Airtag;
+use App\Models\User_Airtag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -18,20 +20,64 @@ class AirtagController extends Controller
 
     public function history()
     {
-        return view('history');
+
+        $user = Auth::user();
+
+        $history = null;
+
+
+        $airtags = DB::table('airtags')
+            ->select('serialnumber', 'itemname', 'itememoji')
+            ->join('users_airtags', 'airtags.id', '=', 'users_airtags.airtag_id')
+            ->where('users_airtags.user_id', '=', $user->id)
+            ->distinct()
+            ->orderBy('itemname', 'asc')
+            ->get();
+
+
+        //dd($airtags);
+
+        return view('history', compact('airtags', 'history'));
     }
+
+    public function historyDetail($serial)
+    {
+
+        $user = Auth::user();
+
+
+        $airtags = DB::table('airtags')
+            ->select('serialnumber', 'itemname', 'itememoji')
+            ->join('users_airtags', 'airtags.id', '=', 'users_airtags.airtag_id')
+            ->where('users_airtags.user_id', '=', $user->id)
+            ->distinct()
+            ->orderBy('itemname', 'asc')
+            ->get();
+
+
+        $history = DB::table('airtags')
+            ->select('*')
+            ->join('users_airtags', 'airtags.id', '=', 'users_airtags.airtag_id')
+            ->where('users_airtags.user_id', '=', $user->id)
+            ->where('airtags.serialnumber', '=', $serial)
+            ->orderBy('airtags.id', 'desc')
+            ->get();
+
+        return view('history', compact('airtags', 'history'));
+    }
+
 
     public function upload(Request $request)
     {
 
-        if($request->file != null){
+        if ($request->file != null) {
             //dd('valid');
 
-            $name = $_FILES["file"]["name"];  
+            $name = $_FILES["file"]["name"];
             // Store the file extension or type
-            $type = $_FILES["file"]["type"];          
+            $type = $_FILES["file"]["type"];
             // Store the file size
-            $size = $_FILES["file"]["size"];          
+            $size = $_FILES["file"]["size"];
             // echo "File actual name is $name"."<br>";
             // echo "File has .$type extension" . "<br>";
             // echo "File has $size of size"."<br>";
@@ -44,12 +90,12 @@ class AirtagController extends Controller
             $file = fopen(($fullpath), "r");
             $counter = 0;
             while (!feof($file)) {
-    
+
                 $line = fgets($file);
                 $item = str_getcsv($line);
-    
+
                 if ($counter > 0) {
-    
+
                     $datetime = $item[0];
                     $serialnumber = $item[1];
                     $batterystatus = $item[2];
@@ -61,7 +107,7 @@ class AirtagController extends Controller
                     $addresscountry = $item[8];
                     $itememoji = $item[9];
                     $itemname = $item[10];
-    
+
                     $id = DB::table('airtags')->insertGetId(
                         [
                             'datetime' => $datetime,
@@ -74,17 +120,17 @@ class AirtagController extends Controller
                             'mapItemFullAddress' => $mapItemFullAddress,
                             'addresscountry' => $addresscountry,
                             'itememoji' => $itememoji,
-                            'itemname' => $datetime
+                            'itemname' => $itemname
                         ]
                     );
-    
+
                     DB::table('users_airtags')->insert([
                         'user_id' => Auth::user()->id,
                         'airtag_id' => $id
                     ]);
-    
+
                 }
-    
+
                 $counter++;
             }
         }
@@ -96,13 +142,13 @@ class AirtagController extends Controller
     public function process()
     {
         $file = fopen(("files\janvermeerbergen@gmail.com - 1670024342.csv"), "r");
-        while(!feof($file)) {
+        while (!feof($file)) {
             //echo fgets($file). "<br>";
             $line = fgets($file);
 
             $record = json_decode($line);
 
-            if($record){
+            if ($record) {
 
 
                 echo $record->serialNumber . "<br/>";
@@ -113,12 +159,12 @@ class AirtagController extends Controller
                 // }
 
                 echo "======================";
-                
+
             }
-            
+
 
         }
-        
+
         //dd($file);
         //return view('upload-data-process');
     }

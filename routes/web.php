@@ -132,6 +132,7 @@ Route::group(['middleware' => ['XSS']], function () {
             //Route::post('upload-data-process', 'process')->middleware('auth')->name('upload-data-process');
 
             Route::get('history', 'history')->middleware('auth')->name('history');
+            Route::get('history/{serial}', 'historyDetail')->middleware('auth')->name('history-detail');
         }
     );
 
