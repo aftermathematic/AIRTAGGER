@@ -25,17 +25,13 @@ class AirtagController extends Controller
 
         $history = null;
 
-
         $airtags = DB::table('airtags')
             ->select('serialnumber', 'itemname', 'itememoji')
             ->join('users_airtags', 'airtags.id', '=', 'users_airtags.airtag_id')
             ->where('users_airtags.user_id', '=', $user->id)
             ->distinct()
             ->orderBy('itemname', 'asc')
-            ->get();
-
-
-        //dd($airtags);
+            ->get();        
 
         return view('history', compact('airtags', 'history'));
     }
@@ -63,6 +59,8 @@ class AirtagController extends Controller
             ->orderBy('airtags.id', 'desc')
             ->get();
 
+
+
         return view('history', compact('airtags', 'history'));
     }
 
@@ -71,16 +69,10 @@ class AirtagController extends Controller
     {
 
         if ($request->file != null) {
-            //dd('valid');
 
             $name = $_FILES["file"]["name"];
-            // Store the file extension or type
             $type = $_FILES["file"]["type"];
-            // Store the file size
             $size = $_FILES["file"]["size"];
-            // echo "File actual name is $name"."<br>";
-            // echo "File has .$type extension" . "<br>";
-            // echo "File has $size of size"."<br>";
 
             $fileName = Auth::user()->email . ' - ' . time() . '.csv';
             $request->file->move(public_path('files'), $fileName);
@@ -90,6 +82,7 @@ class AirtagController extends Controller
             $file = fopen(($fullpath), "r");
             $counter = 0;
             while (!feof($file)) {
+
 
                 $line = fgets($file);
                 $item = str_getcsv($line);
@@ -107,6 +100,7 @@ class AirtagController extends Controller
                     $addresscountry = $item[8];
                     $itememoji = $item[9];
                     $itemname = $item[10];
+                    //$appleid = $item[11];
 
                     $id = DB::table('airtags')->insertGetId(
                         [
@@ -120,7 +114,8 @@ class AirtagController extends Controller
                             'mapItemFullAddress' => $mapItemFullAddress,
                             'addresscountry' => $addresscountry,
                             'itememoji' => $itememoji,
-                            'itemname' => $itemname
+                            'itemname' => $itemname,
+                            //'appleid' => $appleid,
                         ]
                     );
 

@@ -1,7 +1,8 @@
 function initMap() {
     var mapOptions = {
       zoom: 11,
-      center: new google.maps.LatLng(40.67, -73.94), // New York
+      maxZoom:18,
+      center: new google.maps.LatLng(51.2194101, 4.4010925), 
       styles:
   
       [

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('addresscountry');
             $table->string('itememoji');
             $table->string('itemname');
+            $table->string('appleid');
             $table->timestamps();
         });
     }

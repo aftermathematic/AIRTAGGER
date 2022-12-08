@@ -12,13 +12,21 @@
 
         <div class="row">
             <div class="col-3 mh-100 border-end">
+
+                <div class="list-group">
+                    @include('includes.navigationprofile')
+                </div>
+
+                
+                @if ($airtags != null)
+                <h4 class="mt-4">Airtags</h4>
                 <div class="list-group">
                     @foreach($airtags as $airtag)
                     <a href="/history/{{ $airtag->serialnumber }}" class="list-group-item list-group-item-action">{{
                         $airtag->itememoji }} {{ $airtag->itemname }}</a>
                     @endforeach
                 </div>
-
+                @endif
 
             </div>
             <div class="col mh-100">
@@ -52,17 +60,18 @@
     src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script>
     function getCoords() {
-        var locations = [
-            @if($history != null)
-                @foreach($history as $coord)
-                ['{{ $coord->id }}', '{{ $coord->locationlatitude }}', '{{ $coord->locationlongitude }}'],
+
+        @if ($history != null)
+        var locations = [            
+            @foreach($history as $coord)
+        ['{{ $coord->id }}', '{{ $coord->locationlatitude }}', '{{ $coord->locationlongitude }}'],
                 @endforeach
-            @endif
         ];
         return locations;
+        @endif
     }
 </script>
 
-<script src="/js/maps.js"></script>
+<script src="/js/maps.js?t={{ time() }}"></script>
 
 @endsection

@@ -24,5 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call(faqItemTableSeeder::class);
 
         $this->call(contactsTableSeeder::class);
+
+        $this->call(airtagTableSeeder::class);
+        $this->call(userAirtagTableSeeder::class);
     }
 }
